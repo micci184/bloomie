@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Header } from '@/components/Header';
 import './globals.css';
 
 const geistSans = Geist({
@@ -14,12 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Bloomie | Creative Agency',
-  description: 'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
+  description:
+    'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
   keywords: ['creative', 'agency', 'design', 'development'],
   authors: [{ name: 'Bloomie' }],
   openGraph: {
     title: 'Bloomie | Creative Agency',
-    description: 'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
+    description:
+      'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
     type: 'website',
   },
 };
@@ -32,11 +35,11 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-base text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
   );
 }
-
