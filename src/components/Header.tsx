@@ -18,8 +18,7 @@ export function Header() {
   const [isDark, setIsDark] = useState(false);
   const { scrollY } = useScroll();
 
-  // ヘッダーの高さは固定90px
-  const headerHeight = 90;
+  // スクロールに応じて影を変更
   const headerShadow = useTransform(
     scrollY,
     [0, 100, 200],
@@ -29,7 +28,6 @@ export function Header() {
       '0 4px 6px rgba(0, 0, 0, 0.1)',
     ]
   );
-  const borderOpacity = useTransform(scrollY, [0, 100], [0, 1]);
 
   // IntersectionObserverで現在のセクションを追跡
   useEffect(() => {
@@ -72,14 +70,9 @@ export function Header() {
     <>
       <motion.header
         style={{
-          height: headerHeight,
           boxShadow: headerShadow,
-          borderColor: useTransform(
-            borderOpacity,
-            (value) => `rgba(243, 244, 246, ${value})`
-          ),
         }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[#F3F4F6] backdrop-blur-md transition-colors"
+        className="fixed top-0 left-0 right-0 z-50 h-[90px] bg-[#F3F4F6] backdrop-blur-md transition-colors"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
           {/* 中央寄せのピル型ナビ */}
