@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-base text-white;
+    @apply bg-[#E5E7EB] text-base;
   }
 }
 

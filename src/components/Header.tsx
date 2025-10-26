@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -15,31 +15,21 @@ const navItems = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isDark, setIsDark] = useState(false);
   const { scrollY } = useScroll();
 
   // スクロールに応じてヘッダーのスタイルを変更
   const headerHeight = useTransform(scrollY, [0, 100, 200], [72, 64, 56]);
-  const headerBg = useTransform(
-    scrollY,
-    [0, 100, 200],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.6)', 'rgba(255, 255, 255, 0.8)']
-  );
   const headerShadow = useTransform(
     scrollY,
     [0, 100, 200],
     ['0 0 0 rgba(0, 0, 0, 0)', '0 1px 3px rgba(0, 0, 0, 0.1)', '0 4px 6px rgba(0, 0, 0, 0.1)']
   );
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 1]);
-  // テキスト色（白→黒）をスクロールで補間
-  const textColor = useTransform(scrollY, [0, 100, 200], [
-    'rgba(255,255,255,1)',
-    'rgba(34,34,34,0.9)',
-    'rgba(10,10,10,1)'
-  ]);
 
   // IntersectionObserverで現在のセクションを追跡
   useEffect(() => {
-    const sections = ['hero', 'about', 'services', 'culture', 'overview'];
+    const sections = ['hero', 'about', 'services', 'process', 'works'];
     const observers = sections.map((sectionId) => {
       const element = document.getElementById(sectionId);
       if (!element) return null;
@@ -79,13 +69,11 @@ export function Header() {
       <motion.header
         style={{
           height: headerHeight,
-          backgroundColor: headerBg,
           boxShadow: headerShadow,
           borderColor: useTransform(
             borderOpacity,
             (value) => `rgba(243, 244, 246, ${value})`
           ),
-          color: textColor,
         }}
         className="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors"
       >
@@ -93,10 +81,7 @@ export function Header() {
           {/* 中央寄せのピル型ナビ */}
           <div className="flex items-center justify-center h-full">
             <motion.div
-              className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border bg-white/90 text-black/70 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl"
-              style={{
-                borderColor: useTransform(borderOpacity, (v) => `rgba(226,232,240,${v})`),
-              }}
+              className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border border-gray-200 bg-white text-gray-700 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl"
             >
               {/* ロゴ */}
               <motion.a
@@ -113,7 +98,7 @@ export function Header() {
               </motion.a>
 
               {/* デスクトップナビゲーション */}
-              <nav className="hidden md:flex items-center gap-8 text-[16px] text-black/60">
+              <nav className="hidden md:flex items-center gap-8 text-[16px] text-gray-600">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
@@ -128,10 +113,26 @@ export function Header() {
                 ))}
               </nav>
 
-              {/* ダミー: テーマトグル（視覚合わせ用） */}
-              <div className="hidden md:flex items-center h-10 w-[68px] shrink-0 rounded-full bg-black/5 border border-black/10 px-1">
-                <div className="h-8 w-8 rounded-full bg-white shadow" />
-              </div>
+              {/* ダークモード切り替えスイッチ */}
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className="hidden md:flex items-center h-10 w-[68px] shrink-0 rounded-full bg-gray-100 border border-gray-200 px-1 transition-all hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                aria-label="ダークモード切り替え"
+              >
+                <motion.div
+                  className="flex items-center justify-center h-8 w-8 rounded-full bg-white shadow"
+                  animate={{
+                    x: isDark ? 28 : 0,
+                  }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                >
+                  {isDark ? (
+                    <Moon size={16} className="text-gray-700" />
+                  ) : (
+                    <Sun size={16} className="text-yellow-500" />
+                  )}
+                </motion.div>
+              </button>
 
               {/* CTAボタン */}
               <motion.button
@@ -146,7 +147,7 @@ export function Header() {
               {/* モバイルメニューボタン */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden p-2 text-black/70 hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+                className="md:hidden p-2 text-gray-700 hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
                 aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -168,10 +169,10 @@ export function Header() {
         <div className="flex flex-col h-full">
           {/* ドロワーヘッダー */}
           <div className="flex items-center justify-between p-4 border-b">
-            <span className="text-xl font-bold text-base">BLOOMIE</span>
+            <span className="text-xl font-bold text-brand">BLOOMIE</span>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 text-base hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+              className="p-2 text-gray-700 hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
               aria-label="メニューを閉じる"
             >
               <X size={24} />
@@ -188,7 +189,7 @@ export function Header() {
                   'w-full text-left px-4 py-3 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2',
                   activeSection === item.href.slice(1)
                     ? 'bg-brand/10 text-brand'
-                    : 'text-base/80 hover:bg-gray-light/50'
+                    : 'text-gray-700 hover:bg-gray-100'
                 )}
               >
                 {item.name}
@@ -202,7 +203,7 @@ export function Header() {
               className="w-full bg-brand text-white px-6 py-3 rounded-full font-medium hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
               whileTap={{ scale: 0.95 }}
             >
-              Get Started
+              Contact
             </motion.button>
           </div>
         </div>
@@ -221,4 +222,3 @@ export function Header() {
     </>
   );
 }
-
