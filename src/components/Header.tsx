@@ -85,7 +85,7 @@ export function Header() {
                   e.preventDefault();
                   scrollToSection('#hero');
                 }}
-                className="text-[18px] md:text-[20px] font-extrabold text-brand tracking-wide"
+                className="text-[18px] md:text-[20px] font-bold text-brand tracking-wide"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -131,12 +131,12 @@ export function Header() {
 
               {/* CTAボタン */}
               <motion.button
-                className="flex items-center gap-2 bg-brand text-white px-6 h-12 rounded-full font-semibold hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                className="flex items-center gap-2 bg-brand text-white px-6 h-12 rounded-full font-bold hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
                 Contact
-                <ArrowRight size={18} />
+                <ArrowRight size={18} strokeWidth={3} />
               </motion.button>
 
               {/* モバイルメニューボタン */}
@@ -195,7 +195,7 @@ export function Header() {
           {/* ドロワーCTAボタン */}
           <div className="p-4 border-t">
             <motion.button
-              className="w-full bg-brand text-white px-6 py-3 rounded-full font-medium hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+              className="w-full bg-brand text-white px-6 py-3 rounded-full font-bold hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
               whileTap={{ scale: 0.95 }}
             >
               Contact
