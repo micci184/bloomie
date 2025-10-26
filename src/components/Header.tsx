@@ -30,6 +30,12 @@ export function Header() {
     ['0 0 0 rgba(0, 0, 0, 0)', '0 1px 3px rgba(0, 0, 0, 0.1)', '0 4px 6px rgba(0, 0, 0, 0.1)']
   );
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 1]);
+  // テキスト色（白→黒）をスクロールで補間
+  const textColor = useTransform(scrollY, [0, 100, 200], [
+    'rgba(255,255,255,1)',
+    'rgba(34,34,34,0.9)',
+    'rgba(10,10,10,1)'
+  ]);
 
   // IntersectionObserverで現在のセクションを追跡
   useEffect(() => {
@@ -79,6 +85,7 @@ export function Header() {
             borderOpacity,
             (value) => `rgba(243, 244, 246, ${value})`
           ),
+          color: textColor,
         }}
         className="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors"
       >
@@ -91,7 +98,7 @@ export function Header() {
                 e.preventDefault();
                 scrollToSection('#hero');
               }}
-              className="text-2xl font-bold text-base hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+              className="text-2xl font-bold hover:text-brand transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -106,9 +113,7 @@ export function Header() {
                   onClick={() => scrollToSection(item.href)}
                   className={cn(
                     'text-sm font-medium transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1',
-                    activeSection === item.href.slice(1)
-                      ? 'text-brand'
-                      : 'text-base/80'
+                    activeSection === item.href.slice(1) ? 'text-brand' : ''
                   )}
                 >
                   {item.name}
