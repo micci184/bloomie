@@ -23,7 +23,11 @@ export function Header() {
   const headerShadow = useTransform(
     scrollY,
     [0, 100, 200],
-    ['0 0 0 rgba(0, 0, 0, 0)', '0 1px 3px rgba(0, 0, 0, 0.1)', '0 4px 6px rgba(0, 0, 0, 0.1)']
+    [
+      '0 0 0 rgba(0, 0, 0, 0)',
+      '0 1px 3px rgba(0, 0, 0, 0.1)',
+      '0 4px 6px rgba(0, 0, 0, 0.1)',
+    ]
   );
   const borderOpacity = useTransform(scrollY, [0, 100], [0, 1]);
 
@@ -80,9 +84,7 @@ export function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
           {/* 中央寄せのピル型ナビ */}
           <div className="flex items-center justify-center h-full pt-5">
-            <motion.div
-              className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border border-gray-200 bg-white text-gray-700 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl"
-            >
+            <motion.div className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border border-gray-200 bg-white text-gray-700 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl">
               {/* ロゴ */}
               <motion.a
                 href="#hero"
