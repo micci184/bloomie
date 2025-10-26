@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
-  { name: 'Culture', href: '#culture' },
-  { name: 'Overview', href: '#overview' },
+  { name: 'Process', href: '#process' },
+  { name: 'Works', href: '#works' },
 ];
 
 export function Header() {
@@ -93,7 +93,7 @@ export function Header() {
           {/* 中央寄せのピル型ナビ */}
           <div className="flex items-center justify-center h-full">
             <motion.div
-              className="flex items-center gap-6 md:gap-8 px-6 md:px-8 h-14 rounded-full border bg-white/80 shadow-lg backdrop-blur-xl"
+              className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border bg-white/90 text-black/70 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl"
               style={{
                 borderColor: useTransform(borderOpacity, (v) => `rgba(226,232,240,${v})`),
               }}
@@ -105,7 +105,7 @@ export function Header() {
                   e.preventDefault();
                   scrollToSection('#hero');
                 }}
-                className="text-lg md:text-xl font-extrabold text-brand tracking-wide"
+                className="text-[18px] md:text-[20px] font-extrabold text-brand tracking-wide"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -113,13 +113,13 @@ export function Header() {
               </motion.a>
 
               {/* デスクトップナビゲーション */}
-              <nav className="hidden md:flex items-center gap-8 text-[15px] text-black/60">
+              <nav className="hidden md:flex items-center gap-8 text-[16px] text-black/60">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
                     className={cn(
-                      'transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1',
+                      'font-medium transition-colors hover:text-brand focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1',
                       activeSection === item.href.slice(1) ? 'text-brand' : ''
                     )}
                   >
@@ -129,13 +129,13 @@ export function Header() {
               </nav>
 
               {/* ダミー: テーマトグル（視覚合わせ用） */}
-              <div className="hidden md:flex items-center h-9 w-16 shrink-0 rounded-full bg-black/5 border border-black/10 px-1">
-                <div className="h-7 w-7 rounded-full bg-white shadow" />
+              <div className="hidden md:flex items-center h-10 w-[68px] shrink-0 rounded-full bg-black/5 border border-black/10 px-1">
+                <div className="h-8 w-8 rounded-full bg-white shadow" />
               </div>
 
               {/* CTAボタン */}
               <motion.button
-                className="flex items-center gap-2 bg-brand text-white px-5 h-11 rounded-full font-semibold hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                className="flex items-center gap-2 bg-brand text-white px-6 h-12 rounded-full font-semibold hover:bg-brand/90 transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
