@@ -17,7 +17,7 @@ export function Hero() {
             className="mb-6"
           >
             <h1 className="font-black leading-tight tracking-tight">
-              <span className="block text-[110px] text-gray-900">
+              <span className="block whitespace-nowrap text-[110px] text-gray-900">
                 Go Beyond Boundaries
               </span>
               <motion.span
