@@ -75,11 +75,11 @@ export function Header() {
             (value) => `rgba(243, 244, 246, ${value})`
           ),
         }}
-        className="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-md transition-colors"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#F3F4F6] backdrop-blur-md transition-colors"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
           {/* 中央寄せのピル型ナビ */}
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full pt-5">
             <motion.div
               className="flex items-center gap-6 md:gap-8 px-8 md:px-10 h-16 rounded-full border border-gray-200 bg-white text-gray-700 shadow-[0_12px_36px_rgba(15,23,42,0.06)] backdrop-blur-xl"
             >
