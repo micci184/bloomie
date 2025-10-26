@@ -15,12 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Bloomie | Creative Agency',
-  description: 'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
+  description:
+    'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
   keywords: ['creative', 'agency', 'design', 'development'],
   authors: [{ name: 'Bloomie' }],
   openGraph: {
     title: 'Bloomie | Creative Agency',
-    description: 'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
+    description:
+      'Bloomieは、革新的なクリエイティブソリューションを提供するエージェンシーです。',
     type: 'website',
   },
 };
@@ -41,4 +43,3 @@ export default function RootLayout({
     </html>
   );
 }
-

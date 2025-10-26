@@ -18,8 +18,8 @@ export function Header() {
   const [isDark, setIsDark] = useState(false);
   const { scrollY } = useScroll();
 
-  // スクロールに応じてヘッダーのスタイルを変更
-  const headerHeight = useTransform(scrollY, [0, 100, 200], [72, 64, 56]);
+  // ヘッダーの高さは固定90px
+  const headerHeight = 90;
   const headerShadow = useTransform(
     scrollY,
     [0, 100, 200],
