@@ -15,11 +15,13 @@
 
   html,
   body {
-    min-width: 1440px;
+    width: 1440px;
+    margin: 0 auto;
+    overflow-x: hidden;
   }
 
   body {
-    @apply bg-[#F3F4F6] text-gray-900 overflow-x-auto;
+    @apply bg-[#F3F4F6] text-gray-900;
   }
 }
 

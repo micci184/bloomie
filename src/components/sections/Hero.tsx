@@ -16,15 +16,15 @@ export function Hero() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="mb-6"
           >
-            <h1 className="font-black leading-tight tracking-tight">
-              <span className="block whitespace-nowrap text-[110px] text-gray-900">
+            <h1 className="font-black leading-tight tracking-tight text-center">
+              <span className="block text-[90px] text-gray-900">
                 Go Beyond Boundaries
               </span>
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                className="block text-[110px] text-brand"
+                className="block text-[90px] text-brand"
               >
                 Make it run
               </motion.span>
