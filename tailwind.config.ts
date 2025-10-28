@@ -14,7 +14,13 @@ const config: Config = {
         'gray-light': '#F3F4F6',
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        sans: [
+          'var(--font-inter)',
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+        ],
         mono: ['var(--font-geist-mono)', 'monospace'],
       },
     },
@@ -23,4 +29,3 @@ const config: Config = {
 };
 
 export default config;
-
